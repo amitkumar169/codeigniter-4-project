@@ -107,12 +107,12 @@ class User extends BaseController
         }
     }
 }
-     public function logout(){
-       if(session()->has('loggedUser'))
-        {  
-            session()->remove('loggedUser');
-            return redirect()->to('/user?access=loggedout')->with('fail',
-            'you have logged out successfully');
-        }
+public function logout()
+{
+    if (session()->has('loggedUser')) {
+        session()->destroy();
+    }
+    return redirect()->to('/user')->with('success', 'You have logged out successfully');
 }
+
 }
